@@ -32,6 +32,7 @@ in_internal_perimeter = False
 in_solid_infill = False
 in_top_solid_infill = False
 in_internal_bridge = False
+in_bridge_infill = False
 
 # NOTE: External perimeters omitted since print quality is my main concern
 
@@ -68,12 +69,17 @@ with open(dest_file, "w") as of:
             in_internal_bridge = True
             of.write(oline)
             of.write('_USE_INTERNAL_BRIDGE_SQV\n')
-        elif (oline.startswith(';TYPE:External perimeter') or oline.startswith('; INIT') or oline.startswith(';TYPE:Bridge infill') or oline.startswith(';TYPE:Gap fill') or oline.startswith(';TYPE:Overhang perimeter') or oline.startswith(';TYPE:Thin wall')) and (in_infill or in_internal_perimeter or in_solid_infill or in_top_solid_infill or in_internal_bridge):
+        elif oline.startswith(';TYPE:Bridge infill'):
+            in_bridge_infill = True
+            of.write(oline)
+            of.write('_USE_BRIDGE_INFILL_SQV\n')
+        elif (oline.startswith(';TYPE:External perimeter') or oline.startswith('; INIT') or oline.startswith(';TYPE:Gap fill') or oline.startswith(';TYPE:Overhang perimeter') or oline.startswith(';TYPE:Thin wall')) and (in_infill or in_internal_perimeter or in_solid_infill or in_top_solid_infill or in_internal_bridge):
             in_infill = False
             in_internal_perimeter = False
             in_solid_infill = False
             in_top_solid_infill = False
             in_internal_bridge = False
+            in_bridge_infill= False
             of.write(oline)
             of.write('_USE_NORMAL_SQV\n')
         else:
