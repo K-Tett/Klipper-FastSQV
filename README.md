@@ -38,7 +38,7 @@ NOTE:
 1. Copy the [`FastSQV.py` file](superslicer/FastSQV.py) from the repository's superslicer folder in a folder on your computer where superslicer runs. Put it in a folder without any space.
 1. Install Python (if you are using Windows, don't install python from the Microsoft Store, it won't work)
 1. Reference the post processing script into your superslicer configuration. Eg. for Windows:
-    ![superslicer_config](docs/superslicer_config.png)
+    ![superslicer_config](docs/superslicer_config.PNG)
 1. Run your slicing as usual and export or upload the file to your printer. If everything works as ecpected, you'll see a black terminal window poping up (that is the script running).
 
 # How to validates that it works well
