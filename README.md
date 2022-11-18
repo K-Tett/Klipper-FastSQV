@@ -20,9 +20,9 @@ This is mandatory, whatever the slicer you use:
     [save_variables]
     filename: ~/klipper_config/saved_variables.cfg
     ```
-2. Copy the content of [`fast_infill.cfg`](klipper/fast_infill.cfg) into your `printer.cfg`
-3. If you use a standard screen (not KlipperScreen), you can also add the content of [`menu_fast_infill.cfg`](klipper/menu_fast_infill.cfg). This will add 2 entries in your `Tune` menu to be able to set some values without going to the fluidd/mainsail interface
-4. Once you have added the configuration to your klipper configuration, restart Klipper
+2. Copy the content of [`fast_infill.cfg`](klipper/fast_infill.cfg) into your `printer.cfg`.
+3. If you use a standard screen (not KlipperScreen), you can also add the content of [`menu_fast_infill.cfg`](klipper/menu_fast_infill.cfg). This will add a new "Tune FastSQV" menu to be able to set some values without going to the fluidd/mainsail interface.
+4. Once you have added the configuration to your klipper configuration, restart Klipper.
 5. When the machine is back online, run the command `SET_INFILL_SQV SQV=<VALUE>`. This will define the SQV value you want to use during the infill. I suggest a value of `20` if your printer is capable of going very fast (eg. Voron, RatRig VCore-3, ...).
 
 Extra Step: 
@@ -31,7 +31,13 @@ Extra Step:
 You can update the SQV value for infill while it's printing by using the same command above. It will be applied during the next infill run. If you don't want to modify the infill SQV, just set the value to the same value as your default SQV.
 
 NOTE:
-* Ensure that the printer is perfectly tuned to handle high printing speed otherwise layer shift and other artifacts may occur during the printing process.
+* :warning: Ensure that the printer is perfectly tuned to handle high printing speed otherwise layer shift and other artifacts may occur during the printing process.
+* The `fast_infill.cfg` and `menu_fast_infill.cfg` files can be copied to the same folder as your `printer.cfg` and just add these sections there:
+    ```ini
+    [include fast_infill.cfg]
+    [include menu_fast_infill.cfg]
+    ```
+
 
 ## SuperSlicer
 
