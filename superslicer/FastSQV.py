@@ -44,6 +44,7 @@ with open(dest_file, "w") as of:
     of.write('_USE_SOLID_INFILL_SQV\n')
     of.write('_USE_TOP_SOLID_INFILL_SQV\n')
     of.write('_USE_INTERNAL_BRIDGE_SQV\n')
+    of.write('_USE_BRIDGE_INFILL_SQV\n')
     of.write('_USE_NORMAL_SQV\n')
     for line_Index in range(len(lines)):
         oline = lines[line_Index]
